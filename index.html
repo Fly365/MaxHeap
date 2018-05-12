@@ -13,7 +13,6 @@
 
 <canvas id="c"></canvas>
 
-<script src="jq.js"></script>
 <script>
 Array.prototype.swap = function(a, b) {
   const t = this[a]
@@ -161,7 +160,7 @@ let maxHeap
 let dw = 0
 let dh = 0
 
-$(window).on('resize', (e) => {
+window.onresize = () => {
   dw = window.innerWidth
   dh = window.innerHeight
 
@@ -171,7 +170,7 @@ $(window).on('resize', (e) => {
   maxHeap.calculatPos()
   maxHeap.resetPos()
   maxHeap.render()
-})
+}
 
 function loopHeapify(k) {
   if (k < 0) {
@@ -198,7 +197,7 @@ function loopHeapify(k) {
     }
 
     node.colorFill = '#fc0'
-  }, 5)
+  }, 200)
 }
 
 function loopRender() {
@@ -210,7 +209,7 @@ function loopRender() {
 }
 
 maxHeap = new MaxHeap({
-  arr: new Array(500).fill().map((_, idx, arr) => {
+  arr: new Array(50).fill().map((_, idx, arr) => {
     return rand(0, 100)
   })
 })
@@ -219,7 +218,7 @@ for (let i = maxHeap.d.cur + 1, len = maxHeap.d.arr.length; i < len; i++) {
   maxHeap.d.arr[i].colorFill = '#3399CC'
 }
 
-$(window).trigger('resize')
+window.onresize()
 
 loopHeapify(maxHeap.d.cur)
 loopRender()
