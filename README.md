@@ -2,4 +2,4 @@
 
 可视化二叉树
 
-![./demo.png](./demo.png)
+![./demo1.png](./demo1.png)
